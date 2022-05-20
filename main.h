@@ -1,15 +1,33 @@
-#include "holberton.h"
+#ifndef MAIN_H
+#define MAIN_H
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdarg.h>
+
+
 /**
- * main - main function of program
- * Return: always 0
+ * struct format - Struct for format
+ * @specifiers: Struct format
+ * @f: The function associated
  */
-int main(void)
+
+typedef struct specifiers
 {
-	int num;
-	char *string;
-	
-	num = 98;
-	string = "Hello, Holberon!"
-	_printf("%s is %i.\n", string, num);
-	return (0);
-}
+	char specifiers;
+	int (*f)(va_list);
+} specifiers_t;
+
+/*prototypes*/
+int _printf(const char *format, ...);
+int get_function(char s, va_list args);
+int _putchar(char c);
+
+/*Conversion specifiers*/
+int print_char(va_list args);
+int print_string(va_list args);
+int print_digit(va_list args);
+int print_mod(va_list args);
+int print_rev_string(va_list args);
+
+#endif
